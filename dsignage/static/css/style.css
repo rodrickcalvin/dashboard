@@ -1,0 +1,52 @@
+body{
+    background-image: revert;
+}
+header{
+    color: #3875d7;
+    background-color: #ff9400;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+h1{
+    color: #FCA205;
+}
+
+img{
+    display: flex;
+    width: 65px;
+    height: 80px;
+    padding-left: 0px;
+}
+article {
+    border-left: 2px solid gray;
+    overflow: -moz-scrollbars-horizontal;
+}
+nav {
+    border-left: 2px solid gray;
+    float: right;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+aside{
+}
+@keyframes footer {
+
+
+}
+footer {
+    background-color: #a2ff12;
+    animation-duration: 2s;
+}
+
+
+#clockbox{
+    border: 2px solid red;
+    float: right;
+    font-size: 25px;
+    color: #3875d7;
+
+}
+#title{
+    display: inline-flex;
+}

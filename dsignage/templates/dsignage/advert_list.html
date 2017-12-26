@@ -1,0 +1,88 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+function GetClock(){
+var d=new Date();
+var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
+var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+if(nhour==0){ap=" AM";nhour=12;}
+else if(nhour<12){ap=" AM";}
+else if(nhour==12){ap=" PM";}
+else if(nhour>12){ap=" PM";nhour-=12;}
+
+if(nmin<=9) nmin="0"+nmin;
+if(nsec<=9) nsec="0"+nsec;
+
+document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
+}
+
+window.onload=function(){
+GetClock();
+setInterval(GetClock,1000);
+}
+</script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+</head>
+<body>
+<header>
+    <div id="title"><h2>CEDAT e Notice Board </h2></div>
+    <div id="clockbox"></div>
+</header>
+<body>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+ <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<hr>
+<nav>
+        <h2>Twitter Feed</h2>
+        <a class="twitter-timeline"
+            href="https://twitter.com/yccommunity"
+            data-width="300"
+            data-height="300"
+            data-tweet-limit="3">
+            Tweets by @yccommunity
+        </a>
+         <h2>Facebook Feed</h2>
+        <div class="fb-page" data-href="https://www.facebook.com/youthcodecommunity/" data-tabs="timeline" data-width="300" data-height="350" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/youthcodecommunity/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/youthcodecommunity/">Youth Code Community</a></blockquote></div>
+</nav>
+
+<section id="advert">
+    {% for advert in adverts %}
+
+        <h1>{{ advert.title }}</h1>
+        <!--<img src="{{ advert.image }}">-->
+        <img src="{% static 'img/DSC_0070.JPG' %}">
+        <aside>{{ advert.text|linebreaksbr }}</aside>
+   {% endfor %}
+</section>
+
+ <p>
+   {% if user and not user.is_anonymous %}
+     Hello {{ user.get_full_name|default:user.username }}!
+   {% else %}
+     I don’t think we’ve met before.
+   {% endif %}
+ </p>
+
+
+<footer> ARMS PROJECT MAKERERE. @ARMSPROJECT</footer>
+</body>
+</html>
