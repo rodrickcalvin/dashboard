@@ -1,4 +1,4 @@
-<HOW TO CONTRIBUTE/>
+## HOW TO CONTRIBUTE
 
 1- Fork the dashboard from Github:- https://github.com/maximugisha/dashboard
 
